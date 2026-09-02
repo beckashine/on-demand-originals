@@ -60,11 +60,11 @@ The project demonstrates my ability to build technology solutions that support b
 
 ## Live Project
 
-[Live Website Frontend →](https://on-demand-originals.netlify.app)
+[Live Website Frontend →](https://on-demand-originals.netlify.app)<br>
 
-[Admin Login Backend →](https://on-demand-originals.netlify.app/admin/login)
-  Username demo@login.com
-  Password demo123
+[Admin Login Backend →](https://on-demand-originals.netlify.app/admin/login)<br>
+  Username demo@login.com<br>
+  Password demo123<br>
 
 ## Project Status
 
