@@ -1,71 +1,95 @@
-# On Demand Originals
+# Custom E-Commerce Website
 
-Custom e-commerce website and business operations platform built for a sports memorabilia business transitioning from eBay to a dedicated online storefront.
+## Client Website & Technical Implementation
 
-## Overview
+**Live Demo Admin Login:** [on-demand-originals.netlify.app](https://on-demand-originals.netlify.app/admin.login)<br>
+        **Email** - demo@login.com | **PW** demo123
 
-The platform includes both a customer-facing storefront and a backend administration portal, giving the business greater control over its products, sales experience, and customer communications.
+## The Project
 
-## Key Features
+On-Demand Originals is a client e-commerce website built around the client's goals, requirements, and desired user experience.
 
-- Custom responsive e-commerce storefront
-- Product catalog and product detail pages
-- PayPal payment processing
-- Backend admin portal for managing products
-- Add and update product listings without modifying the application
-- Newsletter management and email distribution
-- Business-specific content and workflows
-- Mobile-responsive customer experience
-- Custom reusable components and UI
+I started by understanding what the client needed the site to accomplish and the design they had in mind. I then translated those requirements into the design, functionality, and implementation plan.
 
-## Business Operations Portal
+## My Process
 
-The project includes a private backend portal designed to support day-to-day business operations.
+I approached the project as an implementation from requirements through delivery:
 
-The admin interface allows the business to:
+**Understand → Plan → Design → Implement → Test → Validate → Deliver**
 
-- Add new products
-- Manage product information
-- Update the storefront without developer involvement
-- Manage newsletter communications
-- Send newsletters to customers
+I used AI-assisted development to help turn the project plan and design requirements into a working application.
 
-This extended the project beyond an e-commerce website into a practical business operations system.
+My responsibility was defining the requirements, directing the implementation, making decisions about how the different pieces should work together, testing the result, troubleshooting issues, and validating the finished experience.
 
-## Technology
+## Integrations
 
-| Category | Technology |
-|---|---|
-| Framework | Next.js |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| E-Commerce | Custom storefront |
-| Payments | PayPal |
-| Newsletter | Brevo |
-| Deployment | Netlify |
+The application connects several services to support the client's business requirements:
 
-## Design & Development Approach
+| Service      | Purpose                               |
+| ------------ | ------------------------------------- |
+| **PayPal**   | Payment processing                    |
+| **Brevo**    | Newsletter delivery                   |
+| **Supabase** | Application database and data storage |
 
-The project was developed around the client's specific business requirements, with an emphasis on creating a maintainable storefront and an administrative experience that could be managed without ongoing developer involvement.
+### Deployment
 
-The customer-facing experience and backend operations portal were designed as a cohesive system, allowing the business to manage products and customer communications from a centralized interface.
+**Netlify** is used for application hosting and deployment.
 
-## Project Outcome
+These services work together to provide the functionality needed for the client's e-commerce workflow.
 
-The result is a complete digital commerce and operations platform that combines:
+## Security
 
-**E-Commerce + Payments + Product Management + Customer Communications + Business Operations**
+Security was considered throughout the implementation.
 
-The project demonstrates my ability to build technology solutions that support both the customer experience and the operational needs of a business.
+During development and testing, API keys and other sensitive configuration values were kept out of the application code and stored in a local `.env.local` file. This allowed credentials to be securely provided to the application during testing without exposing them directly in the source code.
 
-## Live Project
+I also considered what information each connected service should have access to and how data moves between the application and those services.
 
-[Live Website Frontend →](https://on-demand-originals.netlify.app)<br>
+## Challenges & Troubleshooting
 
-[Admin Login Backend →](https://on-demand-originals.netlify.app/admin/login)<br>
-  Username demo@login.com<br>
-  Password demo123<br>
+During development, I worked through issues involving application behavior, integrations, and implementation details.
 
-## Project Status
+I used testing, documentation, error messages, research, and AI-assisted troubleshooting to identify problems, make corrections, and verify the results.
 
-**Completed**
+This process allowed me to understand how the different components interact and work through technical problems when the initial implementation does not behave as expected.
+
+## What This Project Demonstrates
+
+This project demonstrates my ability to:
+
+* Understand client requirements
+* Translate requirements into an implementation plan
+* Design a solution around those requirements
+* Coordinate multiple application components
+* Connect services through APIs
+* Consider security throughout implementation
+* Troubleshoot technical issues
+* Use AI-assisted development to execute a project
+* Test and validate the finished solution
+* Deliver a working client implementation
+
+---
+
+### Implementation Flow
+
+```text
+Client Requirements
+        ↓
+Project Plan
+        ↓
+Design & User Experience
+        ↓
+Application Implementation
+        ↓
+ ┌──────┼────────┐
+ ↓      ↓        ↓
+PayPal Supabase  Brevo
+ ↓      ↓        ↓
+ └──────┼────────┘
+        ↓
+Testing & Validation
+        ↓
+Production Deployment
+        ↓
+   Client Delivery
+```
