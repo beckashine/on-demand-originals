@@ -49,7 +49,7 @@ I also considered what information each connected service should have access to 
 
 During development, I worked through issues involving application behavior, integrations, and implementation details.
 
-I used testing, documentation, error messages, research, and AI-assisted troubleshooting to identify problems, make corrections, and verify the results.
+I used testing, documentation, error messages, research, and troubleshooting to identify problems, make corrections, and verify the results.
 
 This process allowed me to understand how the different components interact and work through technical problems when the initial implementation does not behave as expected.
 
