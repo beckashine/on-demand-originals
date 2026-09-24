@@ -33,7 +33,7 @@ The application connects several services to support the client's business requi
 
 ### Deployment
 
-**Netlify** is used for application hosting and deployment.
+**Netlify** is used for demo application hosting and deployment.
 
 These services work together to provide the functionality needed for the client's e-commerce workflow.
 
