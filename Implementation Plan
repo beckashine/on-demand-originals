@@ -1,0 +1,261 @@
+# On Demand Originals: Implementation Plan
+
+> **Status:** Core build complete, admin UI refinement in progress, preparing for delivery
+> **Owner:** Rebeca
+> **Last updated:** 2026/09/24
+
+---
+
+## 1. Project Overview
+
+On Demand Originals is a website that lets customers browse, customize, and order original pieces produced on demand.
+
+The public site and core functionality were built with Claude Code. The current focus is refining the backend/admin interface so it is clean, intuitive, and ready to hand off to the client.
+
+### Goals
+
+- Deliver a stable, production-ready site the client can operate without developer support post-launch
+- Provide an admin experience that is visually polished and easy to use for non-technical staff
+- Document setup, deployment, and day-to-day operations so the admin panel is maintainable
+
+## 2. Scope
+
+### In Scope
+
+| Area | Description |
+|------|-------------|
+| Public site | Landing, Catalog/listing pages, detail pages, contact/inquiry flow |
+| Ordering / requests | Cart, PayPal checkout, Shippo integration, custom request form, quote flow |
+| Admin UI | Content management, order/payment management, newsletter templates/delivery, user settings |
+| Auth | Owner Admin login and role handling |
+| Deployment | Production hosting, domain, DNS, SSL, environment config |
+| Documentation | README, admin guide, handoff notes |
+
+---
+
+## 3. Tech Stack
+
+| Layer | Choice | Notes |
+|-------|--------|-------|
+| Frontend | Next.js | |
+| Styling | Tailwind CSS | |
+| Backend / API | PyPal, Shippo, Brevo | |
+| Database | Supabase | |
+| File / image storage | Supabase | |
+| Email | Resend | |
+| Hosting | Netlify | |
+| AI-assisted Dev | Claude Code | Used for initial build and iteration |
+
+---
+
+## 4. Architecture
+
+```
+[ Public Site ] ──┐
+                  ├──> [ API / Server ] ──> [ Database ]
+[ Admin UI ] ─────┘            │
+                               ├──> [ File Storage ]
+                               ├──> [ Payments ]
+                               └──> [ Email ]
+```
+
+### Key Data Models
+
+- **Product / Original:** title, description, images, pricing, status
+- **Order / Request:** customer info, items, specs, status, timestamps
+- **Customer:** contact details, order history
+- **Admin User:** email, role, last login
+
+### Directory Structure
+
+```
+/
+├── app/ or src/          # application code
+│   ├── (public)/         # public-facing pages
+│   ├── admin/            # admin UI
+│   └── api/              # API routes
+├── components/           # shared UI components
+├── lib/                  # utilities, db client, helpers
+├── public/               # static assets
+├── docs/                 # admin guide, handoff notes
+└── IMPLEMENTATION_PLAN.md
+```
+
+---
+
+## 5. Phases and Milestones
+
+### Phase 0: Core Build ✅
+
+- [x] Project scaffolding and repo setup
+- [x] Public site pages
+- [x] Core data models and database
+- [x] Admin UI (functional first pass)
+
+### Phase 1: Admin UI Refinement
+
+Goal: move the admin from functional but bland to clean, clear, and pleasant to use.
+
+**Design system**
+- [x] Define color palette, including accent and status colors (pending, active, complete, error)
+- [x] Set type scale and font pairing
+- [x] Standardize spacing, border radius, and shadow tokens
+- [x] Build or refine shared components: buttons, inputs, tables, cards, badges, modals, toasts
+
+**Layout and navigation**
+- [x] Persistent sidebar with clear section grouping and active state on Shop page
+- [x] Top bar with page title, breadcrumbs, and account menu
+- [x] Dashboard home with summary cards (recent orders, pending requests, key counts)
+
+**Data views**
+- [x] Tables with search, filter, sort, and pagination
+- [x] Status badges and inline quick actions
+- [x] Empty states with helpful guidance
+- [x] Loading skeletons in place of blank screens
+
+**Forms and editing**
+- [x] Consistent form layout, labels, and help text
+- [x] Inline validation and clear error messages
+- [x] Image upload with preview and reordering
+- [x] Confirmation for destructive actions
+
+**Polish**
+- [x] Responsive layout for tablet and laptop widths
+- [x] Keyboard focus states and basic accessibility pass (contrast, labels, alt text)
+
+**Milestone:** Admin UI signed off by Client 2026/09/24
+
+### Phase 2: QA and Hardening
+
+- [x] End-to-end walkthrough of every public and admin flow
+- [x] Cross-browser check (Chrome, Safari, Firefox, Edge)
+- [x] Mobile check on the public site
+- [x] Form validation on both client and server
+- [x] Auth checks: admin routes protected, sessions expire, no data leaks between roles
+- [x] Input sanitization and file upload restrictions (type, size)
+- [ ] Rate limiting on public forms and login
+- [ ] Secrets only in environment variables, none committed to the repo
+- [ ] npm audit
+- [ ] Error logging and monitoring
+- [ ] Lighthouse pass for performance, accessibility, and SEO
+- [ ] Automated tests for critical paths
+
+**Milestone:** No open critical or high-severity issues
+
+### Phase 3: Deployment (current)
+
+- [ ] Production environment provisioned
+- [ ] Environment variables configured in hosting platform
+- [ ] Production database created and migrated
+- [ ] Seed data or content loaded `[EDIT]`
+- [ ] Custom domain connected and SSL active
+- [ ] Transactional email verified (SPF, DKIM, DMARC)
+- [ ] Payments switched to live mode `[EDIT if applicable]`
+- [ ] Backups scheduled and restore tested
+- [ ] Analytics installed `[EDIT]`
+- [ ] Smoke test on production
+
+**Milestone:** Site live on client domain.
+
+### Phase 4: Handoff and Delivery
+
+- [ ] Admin user accounts created for client
+- [ ] Admin guide written (`docs/admin-guide.md`)
+- [ ] Walkthrough session with client, recorded if possible
+- [ ] Credentials and account ownership transferred (hosting, domain, DB, email, payments)
+- [ ] README finalized with setup and deploy instructions
+- [ ] Support window and terms agreed `[EDIT: e.g. 30 days of bug fixes]`
+- [ ] Final sign-off received
+
+**Milestone:** Project delivered
+
+---
+
+## 6. Timeline
+
+| Phase | Target Start | Target End | Status |
+|-------|--------------|------------|--------|
+| 0. Core Build | | | Done |
+| 1. Admin UI Refinement | | | Done |
+| 2. QA and Hardening | | | In Progress |
+| 3. Deployment | | | Not started |
+| 4. Handoff | | | Not started |
+
+---
+
+## 7. Risks and Mitigations
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Design iteration expands scope | Delays delivery | Agree on a fixed set of admin screens and one revision round |
+| AI-generated code has inconsistent patterns | Harder to maintain | Refactor pass during QA, add linting and formatting rules |
+| Security gaps in admin or uploads | Data exposure | Dedicated security checklist in Phase 2 |
+| Client unfamiliar with admin tools | Support burden after launch | Admin guide plus recorded walkthrough |
+| Third-party service limits or costs | Unexpected bills or outages | Document plan tiers and usage limits in handoff notes |
+
+---
+
+## 8. Definition of Done
+
+A task or phase is done when:
+
+- Functionality works as described in this plan
+- Code is merged to `main` through a reviewed PR
+- No new console errors or failing tests
+- UI matches the design system and works at supported widths
+- Relevant docs are updated
+
+---
+
+## 9. Repo Conventions 
+
+- **Branches:** `feature/<name>`, `fix/<name>`, `chore/<name>`
+- **Commits:** Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`)
+- **PRs:** Link the related issue, include screenshots for UI changes
+- **Issues:** Label by phase (`phase-1-admin-ui`, `phase-2-qa`, etc.) and type (`bug`, `enhancement`, `docs`)
+
+---
+
+## 10. Open Questions
+
+- [ ] TBD
+
+---
+
+## 11. Changelog
+
+> Development started: Aug 14, 2026. 
+
+| Week of | Change |
+|---------|--------|
+| 2026/09/22 | **Inventory quantities:** admin-only stock count; sold-out items are hidden from the shop and moved to a new Archived Items page with a Renew Listing button |
+| 2026/09/22 | **Order numbers:** short numbers in the format `LASTNAME-1042`, used as the memo for Zelle payments |
+| 2026/09/22 | **Checkout:** PayPal, Venmo, and Debit/Credit Card buttons restored alongside Zelle; unfinished PayPal checkouts cleaned up after 30 minutes |
+| 2026/09/22 | **Contact form:** `/contact` now emails Steve directly |
+| 2026/09/22 | **Shop:** Flash Sales and Specials have their own pages and share the shop sidebar; search added to admin Products and Archived pages |
+| 2026/09/22 | **Header:** logo, menu links, and cart stay on one line at every screen size |
+| 2026/09/15 | **Payments and shipping:** added Zelle as a payment option; live UPS rates built but waiting on a Shippo API key, flat $35 shipping until then |
+| 2026/09/15 | **Admin tools:** order export, "forgot password" for admin logins, and support for adding a second owner |
+| 2026/09/15 | **Admin redesign:** all admin pages share one dashboard layout, with stat cards for year-to-date sales and subscriber count |
+| 2026/09/15 | **Admin users:** owner can invite and remove other admin logins |
+| 2026/09/15 | **Newsletter:** subscriber management page, plus an admin Newsletter page with send history and separate composers for New Arrivals, Flash Sales, and Specials |
+| 2026/09/15 | **Client feedback:** new Promotions, Coming Soon, and FAQ pages |
+| 2026/09/15 | **Client feedback:** reworked product fields |
+| 2026/09/15 | **Client feedback:** yellow accent color replaced with royal blue sitewide |
+| 2026/09/15 | **Checkout prefill:** PayPal no longer asks customers for details they already entered |
+| 2026/09/15 | **Mobile:** tighter header spacing and a hamburger menu on phones |
+| 2026/09/15 | **Feedback widget:** temporary site-feedback widget added for the client's review |
+| 2026/09/01 | **Admin:** back buttons on admin pages, quick-edit of order fulfillment status, and deletion of cancelled orders |
+| 2026/09/01 | **Footer and docs:** fixed footer Instagram icon alignment and updated the README |
+| 2026/08/25 | **Mobile layout:** fixed content running off the side of the screen on phones (logo sizing and newsletter form) |
+| 2026/08/14 | **Project kickoff:** set up the Next.js app with the basic page structure, built the first header and menu layout and added the About page, added the client's logo and brand colors |
+| 2026/08/12 | Initial implementation plan created with client |
+
+### Still Open Before Launch
+
+- [ ] **PayPal:** Production credentials. Checkout is still on sandbox, so real purchases can't go through yet.
+- [ ] **Hosting:** Confirm clients GoDaddy plan and suggest plan upgrade if required.
+- [ ] **API keys:** Shippo, for live shipping rates. PayPal for payment processing. Resend for newsletters
+- [ ] **Client copy:** Final About and FAQ text, plus shipping and return policies.
+- [ ] **Database:** Migration from Supabase to MySQL.
+- [ ] **Cleanup:** Remove the temporary feedback widget.
