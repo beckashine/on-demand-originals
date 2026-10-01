@@ -228,6 +228,8 @@ A task or phase is done when:
 
 | Week of | Change |
 |---------|--------|
+| 2026/10/01 | **Inventory & Products** added a cost tracked to admin reports so client can track profit margin and adjust pricing over time
+| 2026/10/01 | **Storefront Upgrades** prices shown with cents. more gallery space, minor copyediting, mobile viewing enhancements
 | 2026/09/22 | **Inventory quantities:** admin-only stock count; sold-out items are hidden from the shop and moved to a new Archived Items page with a Renew Listing button |
 | 2026/09/22 | **Order numbers:** short numbers in the format `LASTNAME-1042`, used as the memo for Zelle payments |
 | 2026/09/22 | **Checkout:** PayPal, Venmo, and Debit/Credit Card buttons restored alongside Zelle; unfinished PayPal checkouts cleaned up after 30 minutes |
