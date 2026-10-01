@@ -1,8 +1,8 @@
 # On Demand Originals: Implementation Plan
 
-> **Status:** Core build complete, admin UI refinement in progress, preparing for delivery
-> **Owner:** Rebeca
-> **Last updated:** 2026/09/24
+> **Status:** Core build complete, admin UI refinement in progress, preparing for delivery<br>
+> **Owner:** Rebeca<br>
+> **Last updated:** 2026/10/01<br>
 
 ---
 
@@ -35,16 +35,16 @@ The public site and core functionality were built with Claude Code. The current 
 
 ## 3. Tech Stack
 
-| Layer | Choice | Notes |
-|-------|--------|-------|
-| Frontend | Next.js | |
-| Styling | Tailwind CSS | |
-| Backend / API | PyPal, Shippo, Brevo | |
+| Layer | Choice |
+|-------|--------|
+| Frontend | Next.js | 
+| Styling | Tailwind CSS | 
+| Backend / API | PyPal, Shippo, Brevo | 
 | Database | Supabase | |
-| File / image storage | Supabase | |
+| File / image storage | Supabase | 
 | Email | Resend | |
 | Hosting | Netlify | |
-| AI-assisted Dev | Claude Code | Used for initial build and iteration |
+| AI-assisted Dev | Claude Code | 
 
 ---
 
@@ -125,7 +125,7 @@ Goal: move the admin from functional but bland to clean, clear, and pleasant to 
 
 **Milestone:** Admin UI signed off by Client 2026/09/24
 
-### Phase 2: QA and Hardening
+### Phase 2: QA and Hardening ✅
 
 - [x] End-to-end walkthrough of every public and admin flow
 - [x] Cross-browser check (Chrome, Safari, Firefox, Edge)
@@ -133,12 +133,12 @@ Goal: move the admin from functional but bland to clean, clear, and pleasant to 
 - [x] Form validation on both client and server
 - [x] Auth checks: admin routes protected, sessions expire, no data leaks between roles
 - [x] Input sanitization and file upload restrictions (type, size)
-- [ ] Rate limiting on public forms and login
-- [ ] Secrets only in environment variables, none committed to the repo
-- [ ] npm audit
-- [ ] Error logging and monitoring
-- [ ] Lighthouse pass for performance, accessibility, and SEO
-- [ ] Automated tests for critical paths
+- [x] Rate limiting on public forms and login
+- [x] Secrets only in environment variables, none committed to the repo
+- [x] npm audit
+- [x] Error logging and monitoring
+- [x] Lighthouse pass for performance, accessibility, and SEO
+- [x] Automated tests for critical paths
 
 **Milestone:** No open critical or high-severity issues
 
@@ -147,27 +147,26 @@ Goal: move the admin from functional but bland to clean, clear, and pleasant to 
 - [ ] Production environment provisioned
 - [ ] Environment variables configured in hosting platform
 - [ ] Production database created and migrated
-- [ ] Seed data or content loaded `[EDIT]`
 - [ ] Custom domain connected and SSL active
 - [ ] Transactional email verified (SPF, DKIM, DMARC)
-- [ ] Payments switched to live mode `[EDIT if applicable]`
+- [ ] Payments switched to live mode
 - [ ] Backups scheduled and restore tested
-- [ ] Analytics installed `[EDIT]`
+- [ ] Analytics installed
 - [ ] Smoke test on production
 
 **Milestone:** Site live on client domain.
 
 ### Phase 4: Handoff and Delivery
 
-- [ ] Admin user accounts created for client
-- [ ] Admin guide written (`docs/admin-guide.md`)
+- [x] Admin user accounts created for client
+- [ ] Admin guide written and reviewed with client
 - [ ] Walkthrough session with client, recorded if possible
 - [ ] Credentials and account ownership transferred (hosting, domain, DB, email, payments)
 - [ ] README finalized with setup and deploy instructions
-- [ ] Support window and terms agreed `[EDIT: e.g. 30 days of bug fixes]`
+- [x] Support window and terms agreed
 - [ ] Final sign-off received
 
-**Milestone:** Project delivered
+**Milestone:** Project delivered!
 
 ---
 
@@ -207,22 +206,13 @@ A task or phase is done when:
 
 ---
 
-## 9. Repo Conventions 
-
-- **Branches:** `feature/<name>`, `fix/<name>`, `chore/<name>`
-- **Commits:** Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`)
-- **PRs:** Link the related issue, include screenshots for UI changes
-- **Issues:** Label by phase (`phase-1-admin-ui`, `phase-2-qa`, etc.) and type (`bug`, `enhancement`, `docs`)
-
----
-
-## 10. Open Questions
+## 9. Open Questions
 
 - [ ] TBD
 
 ---
 
-## 11. Changelog
+## 10. Changelog
 
 > Development started: Aug 14, 2026. 
 
@@ -259,5 +249,4 @@ A task or phase is done when:
 - [ ] **Hosting:** Confirm clients GoDaddy plan and suggest plan upgrade if required.
 - [ ] **API keys:** Shippo, for live shipping rates. PayPal for payment processing. Resend for newsletters
 - [ ] **Client copy:** Final About and FAQ text, plus shipping and return policies.
-- [ ] **Database:** Migration from Supabase to MySQL.
-- [ ] **Cleanup:** Remove the temporary feedback widget.
+- [x] **Cleanup:** Remove the temporary feedback widget.
